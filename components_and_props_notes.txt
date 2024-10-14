@@ -1,0 +1,95 @@
+Components & Props 
+    Components -> Composability, Reusability, Creating a Component 
+    Props -> Passing Props, Accessing Props.
+    Create React App -> Starting the Application, React Project Setup 
+
+1.Component 
+    • A Component is a Js Function that returns a JSX Element.
+        const Welcome = () => <h1 className="message">Hello, User</h1>
+    • Naming Convention
+        Component name should always start with a Capital letter.
+        <script type="text/babel">
+            const Welcome = () => <h1 className="message">Hello, User</h1>
+            ReactDOM.render(<Welcome />, document.getElementById("root"))
+        </script>
+    • What if a component name starts with LowerCase ?
+        * React treats components starting with lowercase letters as html elements.
+         <script type="text/babel">
+            const welcome = () => <h1 className="message">Hello, User</h1>
+            ReactDOM.render(<welcome />, document.getElementById("root"))
+        </script>
+2.Props (Properties)
+    • React allows us to pass information to a component using props.
+    • We can pass props to any component as we declare attributes for any html tag.
+        <Component propName1="propValue1" />
+    • Passing Props 
+        const welcome = () => <h1 className="message">Hello, User</h1>
+        ReactDOM.render(
+            <Welcome name="Rahul" greeting="Hello" />, 
+            document.getElementById("root")
+        );
+    • Accessing Props 
+        • Component accept props as a parameters and can be accessed directly.
+            const component = (props) => {
+                // We can access the props.
+            }
+    • Reusable 
+        A Component is a piece of reusable code that can be used in various parts of an application.
+            const Welcome = (props) => {
+            const {name, greeting} = props;
+            return (<h1 className="message">{greeting}, {name}</h1>);
+        } 
+        ReactDOM.render(
+            <div>
+                <Welcome name="Anudeep" greeting="Hello" />
+                <Welcome name="Pusapati" greeting="Hi"/>
+            </div>, 
+            document.getElementById("root")
+        );
+    • Composable 
+        Components are composable, we can include a component inside another component.
+            const Welcome = (props) => {
+                const {name, greeting} = props;
+                return (<h1 className="message">{greeting}, {name}</h1>);
+            } 
+
+            const Greeting = () => (
+                <div>
+                    <Welcome name="ReactJs" greeting="Hello" />
+                    <Welcome name="Pusapati" greeting="Hi"/>
+                </div>
+            );
+            
+            ReactDOM.render(<Greeting />,document.getElementById("root"));
+
+3.Building Applications - Real World Application 
+    • Creating a real-world app involves a lot of setup because a large number of components need to be organized.
+    • Facebook has created a third-party package create-react-app to generate a ready-made React application setup.
+        npm install -g create-react-app 
+    • it installs create-react-app 
+
+4.Folder Structure 
+    • public / folder: where we will keep the assets like images, videos, icons.
+    • src / folder: where we will do the majority of our work. All of our components will placed here.
+
+5.create-react-app 
+    • ES6 Modules 
+        ES6 Modules should be named with .js extension.
+            1.Default Exports - export default ComponentName.
+            2.Named Exports - export const ComponentName = () = {}
+
+    • Pre-Configured Tools 
+        create-react-app comes pre-configured with 
+            1.Live Editing
+                Live Editing allows React components to be live loaded
+            2.ESLint
+                ESLint is used to analyze source code to report programming errors, bugs and syntax errors.
+            3.Prettier
+                Prettier enforces a consistent styles for indentation, spacing, semicolon, single quotes.
+            4.Babel 
+                Babel is a javascript compiler, compiles JSX into regular javascript.
+            5.Webpack
+                Webpack is used to stitch together a group of modules into a single file(or group of files).
+                This process is called Bundling.
+                
+        
